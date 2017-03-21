@@ -4,7 +4,6 @@
 #include"core.h"
 
 #include"BFC\stdf.h"
-#include"ZKIT\filex.h"
 #include"functions.h"
 #include"util.h"
 
@@ -14,11 +13,13 @@
 
 #include"IPF\ipf.h"
 
+extern bool listSubDirectories(const char* directory, std::vector<std::string>& entries, bool recursive);
+
 int LoadImageSet(const string_t &path, std::vector<_ISRPtrT> &isList)
 {
 	int ec=-1;
 	std::vector<string_t>  vName;
-	if(ListSubDirectories(path,vName,false))
+	if(listSubDirectories(path.c_str(),vName,false))
 	{
 		ec=0;
 		isList.clear();
